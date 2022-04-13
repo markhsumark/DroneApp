@@ -210,6 +210,7 @@ public class SettingFragment extends Fragment {
                         } else {
                             if (isChecked) {
                                 ToastUtil.showToast("live stream open success");
+                                liveStreamManager.setVideoEncodingEnabled(false);
                                 liveStreamManager.startStream();
                                 if(liveStreamManager.isStreaming()){
                                     ToastUtil.showToast("streaming on"+ liveStreamManager.getLiveUrl());

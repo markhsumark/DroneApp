@@ -1080,6 +1080,8 @@ public class MobileActivity extends FragmentActivity {
                 isWaitingForConfirm = true;
                 mHandler.post(() -> ToastUtil.showErrorToast("Accept Active Track Mission", djiError));
             });
+        }else{
+            Log.d(DJIApplication.TAG, "recived socket data: "+socketData);
         }
     }
 }
