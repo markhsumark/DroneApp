@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">DJIDrone</string>
+    <string-array name="setting_array">
+        <item>@string/battery</item>
+        <item>@string/sensor</item>
+        <item>@string/signal</item>
+        <item>@string/controller</item>
+        <item>@string/camera</item>
+        <item>@string/setting</item>
+    </string-array>
+    <string-array name="shooting_mode">
+        <item>SINGLE</item>
+        <item>HDR</item>
+        <item>BURST</item>
+        <item>AEB</item>
+        <item>INTERVAL</item>
+        <item>PANORAMA</item>
+        <item>EHDR</item>
+        <item>HYPER_LIGHT</item>
+    </string-array>
+    <string-array name="mavic_pro2_mode">
+        <item>GPS_SPORT</item>
+        <item>GPS_ATTI</item>
+        <item>TRIPOD</item>
+    </string-array>
+    <string name="battery">Battery</string>
+    <string name="sensor">Sensor</string>
+    <string name="signal">Signal</string>
+    <string name="controller">Controller</string>
+    <string name="camera">Camera</string>
+    <string name="setting">Setting</string>
+    <string name="camera_mode_info">切換相機模式</string>
+    <string name="shooting_mode_info">切換拍照模式</string>
+    <string name="collision_avoidance_info">避障系統</string>
+    <string name="APAS_info">APAS</string>
+    <string name="RTH_avoidance_info">RTH Avoidance</string>
+    <string name="landing_protection_info">Landing Protection</string>
+    <string name="shoot_photo">拍照</string>
+    <string name="record_video">錄影</string>
+    <string name="product_information">Product Information</string>
+    <string name="connection_success">Status: DJIAircraft Connected</string>
+    <string name="connection_loose">Status: No Product Connected</string>
+    <string name="connection_only_rc">Status: Only RC Connected</string>
+    <string name="connected">已連接</string>
+    <string name="connected_remote_control">只連接到遙控器</string>
+    <string name="disconnected">未連接</string>
+    <string name="open">開啟</string>
+    <string name="submit">Submit</string>
+    <string name="close">關閉</string>
+    <string name="success">成功</string>
+    <string name="ok">確認</string>
+    <string name="cancel">取消</string>
+    <string name="database_url">https://dji-drone-7d303.firebaseio.com/</string>
+    <string name="RTMP_url">rtmp://192.168.50.243/show</string>
+    <string name="live_stream_info">LiveStream</string>
+    <string name="go_home_height_info">返航高度</string>
+    <string name="virtual_stick_enable">Virtual Stick</string>
+    <string name="gesture_mode_info">Gesture Mode</string>
+    <string name="retreat_info">Drone Retreat</string>
+    <string name="active_track_enable">Active Track</string>
+    <string name="recommended_configuration_info">Recommend Configuration</string>
+    <string name="web_socket_info">Web Socket</string>
+    <string name="api_key">3afcbfbcba1e0e72936a8144</string>
+</resources>
