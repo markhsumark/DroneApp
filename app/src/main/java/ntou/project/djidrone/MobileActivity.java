@@ -995,59 +995,37 @@ public class MobileActivity extends FragmentActivity {
         boolean isFlightControl = false;
         boolean isGettingRect = false;
         switch (socketData) {
-            case "x":
-            case "X":
+            case "I":
                 mThrottle = distance;
                 isFlightControl = true;
                 break;
-            case "c":
-            case "C":
+            case "K":
                 mThrottle = -distance;
                 isFlightControl = true;
                 break;
-            case "w":
             case "W":
                 mRoll = distance;
                 isFlightControl = true;
                 break;
-            case "a":
             case "A":
                 mPitch = -distance;
                 isFlightControl = true;
                 break;
-            case "s":
             case "S":
                 mRoll = -distance;
                 isFlightControl = true;
                 break;
-            case "d":
             case "D":
                 mPitch = distance;
                 isFlightControl = true;
                 break;
-            case "q":
-            case "Q":
+            case "J":
                 mYaw = -90;
                 isFlightControl = true;
                 break;
-            case "e":
-            case "E":
+            case "L":
                 mYaw = 90;
                 isFlightControl = true;
-                break;
-            case "t":
-            case "T":
-            case "l":
-            case "L":
-                startTakeoffLanding();
-                break;
-            case "rth":
-            case "RTH":
-                startRTH();
-                break;
-            case "st":
-            case "ST":
-                stopTracking();
                 break;
             default:
                 isGettingRect = true;
