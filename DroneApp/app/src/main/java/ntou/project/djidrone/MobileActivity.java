@@ -736,16 +736,20 @@ public class MobileActivity extends FragmentActivity {
                 @Override
                 public void onResult(DJIError djiError) {
                     ToastUtil.showErrorToast("start landing", djiError);
+                    isFlying = true;
                 }
             });
+            isFlying = false;
         } else {
             flightController.startTakeoff(new CommonCallbacks.CompletionCallback() {
                 @Override
                 public void onResult(DJIError djiError) {
 //                    DialogUtil.showDialogBasedOnError(MobileActivity.this,djiError);
                     ToastUtil.showErrorToast("takeoff success", djiError);
+                    isFlying = false;
                 }
             });
+            isFlying = true;
         }
 
     }
@@ -1026,6 +1030,9 @@ public class MobileActivity extends FragmentActivity {
             case "L":
                 mYaw = 90;
                 isFlightControl = true;
+                break;
+            case "P":
+                startTakeoffLanding();
                 break;
             default:
                 isGettingRect = true;
