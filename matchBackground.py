@@ -1,19 +1,25 @@
 import cv2
 import numpy as np
+import math
 from matplotlib import pyplot as plt
 
 
 CORNER = 1
 TARGET = 0
-cap = cv2.VideoCapture("source/Jog.MOV")
-template = cv2.imread('source/jogP1.jpg')
+cap = cv2.VideoCapture("source/test.MOV")
+template = cv2.imread('source/target3.jpg')
 template = cv2.cvtColor(template, cv2.COLOR_BGR2RGB)
 h, w = template.shape[ :2]
-corner_size = 150
-border_size =30
+corner_size = 100
+border_size =50
 corners = 0
 method_corner = cv2.TM_SQDIFF
 person_path =[]
+# def normFunction(vecList):
+#     for vec in vecList:
+#         x_sum, y_sum += vec[0], vec[1]
+
+    
 def getDirect(dPostion):
     dx = dPostion[0]
     dy = dPostion[1]
@@ -59,7 +65,6 @@ class Target:
         self.source = source
 
         #初始化
-        print(type)
         self.bottom_right = [-1,-1]
         self.top_left = [-1,-1]
     def match(self):
@@ -106,6 +111,8 @@ while cap.isOpened():
         total_dPosition = [0, 0]
         dx =0
         dy =0
+        dx_sum = 0
+        dy_sum = 0
         dx_res = 0
         dy_res = 0
         for corner, last_corn_position in zip(last_corners, ls_corn_position):
@@ -131,21 +138,30 @@ while cap.isOpened():
             # print("新中心",new_center, "-- 原", last_corn_position)
 
             # 計算座標差
-            dx += new_center[0] - last_corn_position[0]
-            dy += new_center[1] - last_corn_position[1]
-            print(last_corn_position, "移動到" , new_center, ": ",getDirect([dx,dy]))
+            dx = new_center[0] - last_corn_position[0]
+            dy = new_center[1] - last_corn_position[1]
+            print(int(abs(dx)), int(abs(dy)))
+            if int(abs(dx)) > corner_size:
+                dx = 0.0
+            if int(abs(dy)) > corner_size:
+                dy = 0.0
+            dx_sum += dx
+            dy_sum += dy
+            print(dx_sum, dy_sum)
+            # print(last_corn_position, "移動到" , new_center, ": ",getDirect([dx,dy]),",距離：", math.dist(last_corn_position, new_center))
 
 
-        dx_res = dx/5
-        dy_res = dy/5
-        print([dx_res, dy_res])
-        print("---")
-
+        dx_res = dx_sum/5
+        dy_res = dy_sum/5
         
+        
+        print("---")
+    
 
         target = Target(frame, template, TARGET)
         target.match()
         target.drawRect()
+
         frame = target.source   #拿回結果
         
 
@@ -153,7 +169,8 @@ while cap.isOpened():
         #過去的路徑
         if len(person_path) > 0:
             for i in range(len(person_path)):
-                person_path[i] = [person_path[i][0]+dx_res, person_path[i][1]+dx_res]
+
+                person_path[i] = [person_path[i][0]+dx_res, person_path[i][1]+dy_res]
                 position = (int(person_path[i][0]), int(person_path[i][1]))
                 cv2.circle(frame, position, 3, (0, 255, 255), 3)
         # 現在的路徑點
